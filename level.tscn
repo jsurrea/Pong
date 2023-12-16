@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://cgcyipj81ujax"]
+
+[ext_resource type="PackedScene" uid="uid://bgr6jlv7obh01" path="res://player.tscn" id="1_67w5i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mmq8h"]
+size = Vector2(1920, 100)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nad3d"]
+size = Vector2(100, 1080)
+
+[node name="Level" type="Node2D"]
+
+[node name="TopWall" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopWall"]
+position = Vector2(960, -50)
+shape = SubResource("RectangleShape2D_mmq8h")
+
+[node name="BottomWall" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomWall"]
+position = Vector2(960, 1130)
+shape = SubResource("RectangleShape2D_mmq8h")
+
+[node name="PlayerGoal" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerGoal"]
+position = Vector2(-50, 540)
+shape = SubResource("RectangleShape2D_nad3d")
+
+[node name="OpponentGoal" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OpponentGoal"]
+position = Vector2(1970, 540)
+shape = SubResource("RectangleShape2D_nad3d")
+
+[node name="Player" parent="." instance=ExtResource("1_67w5i")]
+position = Vector2(50, 460)
