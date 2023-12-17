@@ -5,11 +5,14 @@ var direction = Vector2.ZERO
 var angular_speed = PI 
 var is_moving = false
 
+@onready var timer = get_parent().find_child("RestartTimer")
+
 func _ready():
 	randomize()
 	reset_ball()
 	
 func reset_ball():
+	timer.stop()
 	speed = 600
 	direction.x = [-1, 1][randi() % 2]
 	direction.y = [-0.8, 0.8][randi() % 2]
@@ -22,3 +25,7 @@ func _physics_process(delta):
 		
 		if collide:
 			direction = direction.bounce(collide.get_normal())
+			$AudioCollision.play()
+
+func _on_restart_timer_timeout():
+	reset_ball()
