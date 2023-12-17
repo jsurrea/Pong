@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://cgcyipj81ujax"]
+[gd_scene load_steps=7 format=3 uid="uid://cgcyipj81ujax"]
 
 [ext_resource type="PackedScene" uid="uid://bgr6jlv7obh01" path="res://player.tscn" id="1_67w5i"]
+[ext_resource type="Script" path="res://level.gd" id="1_ivsxp"]
 [ext_resource type="Script" path="res://opponent.gd" id="2_7yya7"]
 [ext_resource type="PackedScene" uid="uid://dvxjlt1co0ump" path="res://ball.tscn" id="2_imtn3"]
 
@@ -11,6 +12,7 @@ size = Vector2(1920, 100)
 size = Vector2(100, 1080)
 
 [node name="Level" type="Node2D"]
+script = ExtResource("1_ivsxp")
 
 [node name="TopWall" type="StaticBody2D" parent="."]
 
@@ -45,4 +47,7 @@ script = ExtResource("2_7yya7")
 
 [node name="Ball" parent="." instance=ExtResource("2_imtn3")]
 position = Vector2(960, 540)
-scale = Vector2(0.1, 0.1)
+scale = Vector2(0.2, 0.2)
+
+[connection signal="body_entered" from="PlayerGoal" to="." method="_on_player_goal_body_entered"]
+[connection signal="body_entered" from="OpponentGoal" to="." method="_on_opponent_goal_body_entered"]

@@ -7,6 +7,9 @@ var is_moving = false
 
 func _ready():
 	randomize()
+	reset_ball()
+	
+func reset_ball():
 	speed = 600
 	direction.x = [-1, 1][randi() % 2]
 	direction.y = [-0.8, 0.8][randi() % 2]
