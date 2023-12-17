@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://cgcyipj81ujax"]
+[gd_scene load_steps=8 format=3 uid="uid://cgcyipj81ujax"]
 
 [ext_resource type="PackedScene" uid="uid://bgr6jlv7obh01" path="res://player.tscn" id="1_67w5i"]
 [ext_resource type="Script" path="res://level.gd" id="1_ivsxp"]
 [ext_resource type="Script" path="res://opponent.gd" id="2_7yya7"]
 [ext_resource type="PackedScene" uid="uid://dvxjlt1co0ump" path="res://ball.tscn" id="2_imtn3"]
+[ext_resource type="FontFile" uid="uid://b0ngwvxhy4cer" path="res://poetsen.ttf" id="5_fo8ln"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mmq8h"]
 size = Vector2(1920, 100)
@@ -48,6 +49,29 @@ script = ExtResource("2_7yya7")
 [node name="Ball" parent="." instance=ExtResource("2_imtn3")]
 position = Vector2(960, 540)
 scale = Vector2(0.2, 0.2)
+
+[node name="PlayerScore" type="Label" parent="."]
+custom_minimum_size = Vector2(960, 1080)
+offset_right = 960.0
+offset_bottom = 1080.0
+theme_override_colors/font_color = Color(1, 1, 1, 0.54902)
+theme_override_fonts/font = ExtResource("5_fo8ln")
+theme_override_font_sizes/font_size = 96
+text = "Player Score"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="OpponentScore" type="Label" parent="."]
+custom_minimum_size = Vector2(960, 1080)
+offset_left = 960.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+theme_override_colors/font_color = Color(1, 1, 1, 0.54902)
+theme_override_fonts/font = ExtResource("5_fo8ln")
+theme_override_font_sizes/font_size = 96
+text = "Opponent Score"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="body_entered" from="PlayerGoal" to="." method="_on_player_goal_body_entered"]
 [connection signal="body_entered" from="OpponentGoal" to="." method="_on_opponent_goal_body_entered"]
